@@ -23,8 +23,8 @@ def init_app():
 
         # Blueprints
         app.register_blueprint(todos_bp)
-        # from . import routes
-        # app.register_blueprint(auth.auth_bp)
-        # app.register_blueprint(admin.admin_bp)
+        
+        # APIs Resources
+        api.add_resource(TodoResource, '/todo', '/todo/<int:id>', endpoint="todo")
         db.create_all()
         return app
