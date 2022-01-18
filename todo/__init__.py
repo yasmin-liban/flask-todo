@@ -16,7 +16,9 @@ def init_app():
     api.init_app(app)
     
     with app.app_context():
+        
         # Import all app models here
+        from .models.TodoModel import (Todo)
         from .mocks.TodoMocks import todos_bp
 
         # Blueprints
