@@ -1,19 +1,23 @@
-from typing import List
-from todo.models import db, Todo
+from flask import Blueprint
+import click
+from todo.models.TodoModel import db, Todo
+
+todos_bp = Blueprint('mock_todos', __name__)
 
 data = [
     {
         "title": "Finish my First Flask App",
-        "descripton": "Finish this project of a Flask App I started"
+        "description": "Finish this project of a Flask App I started"
     },
     {
         "title": "Drink my meds",
-        "descripton": "Don't forget your meds huh",
+        "description": "Don't forget your meds huh",
         "done": True
     }
 ]
 
-def save_data(data: list[dict]):
+@todos_bp.cli.command('create')
+def create_todos():
     for d in data:
         new_data = Todo(
             title=d.get("title",""), 
@@ -22,5 +26,3 @@ def save_data(data: list[dict]):
         )
         db.session.add(new_data)
         db.session.commit()
-
-save_data(data)

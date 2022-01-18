@@ -17,8 +17,10 @@ def init_app():
     
     with app.app_context():
         # Import all app models here
-        from .models import (Todo)
+        from .mocks.TodoMocks import todos_bp
 
+        # Blueprints
+        app.register_blueprint(todos_bp)
         # from . import routes
         # app.register_blueprint(auth.auth_bp)
         # app.register_blueprint(admin.admin_bp)
