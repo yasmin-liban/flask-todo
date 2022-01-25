@@ -22,8 +22,8 @@ def init_app():
     with app.app_context():
         
         # Import all app models here
-        from .models.TodoModel import (Todo)
-        from .mocks.TodoMocks import todos_bp
+        from .models import (Todo)
+        from .mocks import todos_bp
 
         # Blueprints
         app.register_blueprint(todos_bp)

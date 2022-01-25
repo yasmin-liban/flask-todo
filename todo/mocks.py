@@ -1,6 +1,6 @@
 from flask import Blueprint
 import click
-from todo.models.TodoModel import db, Todo
+from todo.models import db, Todo
 
 todos_bp = Blueprint('mock_todos', __name__)
 
